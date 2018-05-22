@@ -145,17 +145,17 @@ namespace Payment_System
                     {
                         if (body.Ex != null) throw body.Ex;
 
-                        Console.WriteLine("message: " + body.Content.Message);
+                        Console.WriteLine("Message: " + body.Content.Message);
                     }
                     catch (Exception e)
                     {
-                        Debug.WriteLine("error: " + e.Message);
+                        Debug.WriteLine("Error: " + e.Message);
                     }
                 }, transData);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("error: " + ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
             }
             Console.ReadLine();
         }
@@ -165,7 +165,6 @@ namespace Payment_System
         {
             Program program = new Program();
             program.Start();
-            Debug.WriteLine("END");
         }
     }
 }
