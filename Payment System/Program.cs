@@ -85,6 +85,12 @@ namespace Payment_System
         }
 
         public void Start() {
+            //Private Key of Sender
+            const String PRIVATE_KEY = "7921112a8aea456fad3b260b97fa61aa77a9df362dfacec2e748ae8977ea5d7d";
+            //Message
+            const String MESSAGE = " ";
+            //Recipient Address
+            const String RECIPIENT = "TDRQ6B5K6434DU3QURHZP4PSIIN4LOP7G5O4T73G";
 
             try
             {
@@ -121,7 +127,7 @@ namespace Payment_System
                         });
 
                         //experiment mosaic
-                        MosaicList.Add(new CSharp2nem.Model.Transfer.Mosaics.Mosaic(data.MosaicId.NamespaceId, data.MosaicId.Name, 200000));
+                        MosaicList.Add(new CSharp2nem.Model.Transfer.Mosaics.Mosaic(data.MosaicId.NamespaceId, data.MosaicId.Name, 10000));
                         Console.WriteLine("Mosaic: " + data.MosaicId.Name);
                         Console.WriteLine("Amount: " + ((double)data.Quantity / 10000).ToString("N6"));
                     }
@@ -129,13 +135,13 @@ namespace Payment_System
 
                 //transfer transaction
                 var accountFactory = new PrivateKeyAccountClientFactory(connection);
-                var accClient = accountFactory.FromPrivateKey("7921112a8aea456fad3b260b97fa61aa77a9df362dfacec2e748ae8977ea5d7d");
+                var accClient = accountFactory.FromPrivateKey(PRIVATE_KEY);
 
                 var transData = new TransferTransactionData()
                 {
                     Amount = 1000000, // amount should always be 1000000 micro xem when attaching mosaics as it acts as a multiplier.
-                    Message = "GG work part 2",
-                    RecipientAddress = "TDRQ6B5K6434DU3QURHZP4PSIIN4LOP7G5O4T73G",
+                    Message = MESSAGE,
+                    RecipientAddress = RECIPIENT,
                     ListOfMosaics = MosaicList
                 };
 
@@ -157,8 +163,8 @@ namespace Payment_System
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
-            System.Threading.Thread.Sleep(5000);
-            Console.WriteLine("Press a key to exit..");
+            System.Threading.Thread.Sleep(2000);
+            Console.WriteLine("Press enter to exit..");
             Console.ReadLine();
         }
 
