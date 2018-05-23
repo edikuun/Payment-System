@@ -157,6 +157,8 @@ namespace Payment_System
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
+            System.Threading.Thread.Sleep(5000);
+            Console.WriteLine("Press a key to exit..");
             Console.ReadLine();
         }
 
