@@ -80,6 +80,7 @@ namespace Payment_System
             MosaicList = new List<CSharp2nem.Model.Transfer.Mosaics.Mosaic>();
 
             connection = new Connection();
+            //connection.SetHost("192.168.1.3");
             connection.SetTestnet();
             Address = "TCHWU4CEDKLIODYK2L2ECQKSEY5LWNFIP7UMDGXB";
         }
@@ -117,7 +118,8 @@ namespace Payment_System
                 foreach (var data in mosaicResponse.Data)
                 {
                     // XEM is mosaic, but it does not shown because it has already been shown on the above.
-                    if (data.MosaicId.Name != "xem")
+                    //data.MosaicId.Name == CURRENCY_ID
+                    if (data.MosaicId.Name != "xem") 
                     {
                         Mosaics.Add(new Mosaic
                         {
@@ -140,7 +142,7 @@ namespace Payment_System
                 var transData = new TransferTransactionData()
                 {
                     Amount = 1000000, // amount should always be 1000000 micro xem when attaching mosaics as it acts as a multiplier.
-                    Message = MESSAGE,
+                    //Message = MESSAGE,
                     RecipientAddress = RECIPIENT,
                     ListOfMosaics = MosaicList
                 };
